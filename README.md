@@ -12,5 +12,5 @@ Financeku adalah aplikasi pencatatan keuangan pribadi yang sederhana dan mudah d
 - **Lailiatul Qudriyah**       
 
 ## Akses Link
-Link : [financeku.wuaze.com](https://financeku.wuaze.com/)
-Demo Project : [Video Demo Financeku App](https://youtu.be/BnVrgVDcDsg)
+- Link : [financeku.wuaze.com](https://financeku.wuaze.com/)
+- Demo Project : [Video Demo Financeku App](https://youtu.be/BnVrgVDcDsg)
