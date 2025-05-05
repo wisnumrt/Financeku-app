@@ -10,3 +10,6 @@ Financeku adalah aplikasi pencatatan keuangan pribadi yang sederhana dan mudah d
 - **Muhammad Adeva**           
 - **Rayhan Gading Andri P**    
 - **Lailiatul Qudriyah**       
+
+## Akses Link
+Link : [financeku.wuaze.com](https://financeku.wuaze.com/)
