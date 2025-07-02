@@ -971,7 +971,7 @@ mysqli_close($conn);
             // Update pagination display immediately, without reload
             updatePagination(tableId, paginationId, rowsPerPage, page);
         }
-
+        
         document.getElementById("setting-icon").addEventListener("click", function(event) {
             event.stopPropagation();
             const menu = document.getElementById("dropdown-menu");
@@ -984,7 +984,6 @@ mysqli_close($conn);
                 menu.style.display = "none";
             }
         });
-    </script>
     </script>
 </body>
 </html>

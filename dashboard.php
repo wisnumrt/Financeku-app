@@ -269,7 +269,7 @@ $conn->close();
             font-weight: 500;
             text-decoration: none;
         }
-
+        
         .dropdown-setting {
             position: relative;
             display: inline-block;

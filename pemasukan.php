@@ -143,7 +143,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             background-color: #f1f1f1;
         }
 
-
         .logout a {
             color: #fff;
             text-decoration: none;
