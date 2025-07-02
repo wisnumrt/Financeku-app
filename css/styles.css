@@ -1,0 +1,111 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f7f7f7;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: linear-gradient(180deg, #FFFFFF 0%, #D0D0D0 100%);
+    background-attachment: fixed;
+}
+
+.container, .dashboard {
+    padding: 2rem;
+    border-radius: 8px;
+    text-align: center;
+}
+
+h1 a {
+    text-decoration: none !important;
+    color: inherit !important;
+}
+
+
+h1 {
+    margin-bottom: 0.5rem;
+}
+
+p {
+    margin: 0.5rem 0;
+    color: #828282;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+input {
+    padding: 0.5rem;
+    margin: 0.5rem 0;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.button-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 1rem;
+}
+
+button,
+a.signup-link {
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 4px;
+    background-color: black;
+    color: white;
+    cursor: pointer;
+    margin-right: 10px;
+    text-decoration: none;
+    font-size: inherit; /* Pastikan ukuran font sama untuk kedua tombol */
+}
+
+.center-button {
+    display: flex;
+    justify-content: center;
+    margin-top: 1rem;
+}
+
+a.signup-link {
+    margin-right: 0;
+}
+
+a.signup-link:hover {
+    text-decoration: none;
+}
+.success {
+    background-color: cyan;
+    color: green;
+    padding: 10px;
+    border: 1px solid green;
+}
+  
+.error {
+    background-color: red;
+    color: white;
+    padding: 10px;
+    border: 1px solid red;
+}
+
+.password-container {
+    position: relative;
+}
+
+.toggle-password {
+    position: absolute;
+    margin-right: auto;
+    right: 0px;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 30px;
+    padding: 0 10px;
+    font-size: 0.9em;
+    color: white;
+    background-color: black;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
