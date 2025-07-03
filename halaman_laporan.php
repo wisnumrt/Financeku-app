@@ -203,6 +203,62 @@ mysqli_close($conn);
             font-size: 16px;
         }
 
+        /* Filter Bar Responsive Styles */
+        .filter-form {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: wrap;
+            flex: 1;
+            max-width: 600px;
+        }
+
+        .filter-select {
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 14px;
+            background-color: white;
+            flex: 1;
+            min-width: 100px;
+        }
+
+        .filter-btn {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+            white-space: nowrap;
+            flex-shrink: 0;
+        }
+
+        .filter-btn:hover {
+            background-color: #0056b3;
+        }
+
+        .download-form {
+            margin: 0;
+            flex-shrink: 0;
+        }
+
+        .download-btn {
+            padding: 10px 20px;
+            background-color: #000;
+            color: #fff;
+            border-radius: 5px;
+            border: none;
+            cursor: pointer;
+            font-size: 14px;
+            white-space: nowrap;
+        }
+
+        .download-btn:hover {
+            background-color: #333;
+        }
+
         .tab-container {
             display: flex;
             justify-content: space-between;
@@ -408,14 +464,32 @@ mysqli_close($conn);
             }
             
             .filter-bar {
-                flex-wrap: wrap;
-                width: 80%;
+                flex-direction: column;
+                gap: 15px;
+                width: 90%;
+                align-items: stretch;
             }
             
-            .filter-bar select, 
-            .filter-bar button {
-                flex: 1 0 calc(50% - 10px);
-                margin: 5px 0;
+            .filter-form {
+                width: 100%;
+                max-width: none;
+                justify-content: center;
+            }
+            
+            .filter-select {
+                min-width: 0;
+                flex: 1;
+            }
+            
+            .download-form {
+                width: 100%;
+                display: flex;
+                justify-content: center;
+            }
+            
+            .download-btn {
+                width: 100%;
+                max-width: 200px;
             }
             
             .tab-container {
@@ -439,65 +513,7 @@ mysqli_close($conn);
                 font-size: 14px;
             }
         }
-        
-        /* Tablets */
-        @media screen and (max-width: 768px) {
-            .head-bar {
-                padding: 0 10px;
-            }
-            
-            .title {
-                font-size: 28px;
-            }
-            
-            .logout {
-                padding: 6px 12px;
-                font-size: 14px;
-            }
-            
-            .summary .income-label, 
-            .summary .expense-label {
-                font-size: 20px;
-            }
-            
-            .summary .income-amount, 
-            .summary .expense-amount {
-                font-size: 24px;
-            }
-            
-            .tab button {
-                padding: 10px 15px;
-                font-size: 15px;
-            }
-            
-            table {
-                margin: 10px auto;
-            }
-            
-            table th, table td {
-                padding: 8px 10px;
-                font-size: 14px;
-            }
-            
-            .actions img {
-                width: 22px;
-                height: 22px;
-            }
-            
-            .date-column {
-                width: 120px;
-            }
 
-            .pagination {
-                flex-wrap: wrap;
-            }
-            
-            .pagination button {
-                padding: 5px 10px;
-                font-size: 13px;
-            }
-        }
-        
         /* Mobile devices */
         @media screen and (max-width: 576px) {
             .dashboard {
@@ -525,13 +541,23 @@ mysqli_close($conn);
             
             .filter-bar {
                 flex-direction: column;
-                width: 90%;
-                padding: 10px;
-                gap: 5px;
+                width: 95%;
+                padding: 15px;
+                gap: 10px;
             }
             
-            .filter-bar select, 
-            .filter-bar button {
+            .filter-form {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .filter-select, 
+            .filter-btn {
+                width: 100%;
+                min-width: 0;
+            }
+            
+            .download-btn {
                 width: 100%;
             }
             
@@ -590,48 +616,6 @@ mysqli_close($conn);
                 font-size: 12px;
             }
         }
-        
-        /* Very small mobile devices */
-        @media screen and (max-width: 375px) {
-            .title {
-                font-size: 20px;
-            }
-            
-            .menu img {
-                width: 20px;
-                height: 20px;
-            }
-            
-            .logout {
-                padding: 5px 10px;
-                font-size: 12px;
-            }
-            
-            .summary .income-label, 
-            .summary .expense-label {
-                font-size: 18px;
-            }
-            
-            .summary .income-amount, 
-            .summary .expense-amount {
-                font-size: 20px;
-            }
-            
-            .filter-bar select {
-                font-size: 14px;
-                padding: 8px;
-            }
-            
-            .tab button {
-                padding: 8px 5px;
-                font-size: 12px;
-            }
-
-            .pagination button {
-                padding: 3px 6px;
-                font-size: 11px;
-            }
-        }
     </style>
 </head>
 <body>
@@ -678,9 +662,9 @@ mysqli_close($conn);
                 <div class="expense-amount">Rp<?php echo number_format(array_sum(array_column($expenses, 'amount')), 2, ',', '.'); ?></div>
             </div>
         </div>
-        <div class="filter-bar" style="display: flex; align-items: center; justify-content: center; gap: 10px; flex-wrap: wrap; margin-top: 10px;">
-            <form method="GET" action="halaman_laporan.php" style="display: flex; align-items: center; gap: 10px;">
-                <select name="year" id="yearSelect">
+        <div class="filter-bar">
+            <form method="GET" action="halaman_laporan.php" class="filter-form">
+                <select name="year" id="yearSelect" class="filter-select">
                     <?php
                     $currentYear = date("Y");
                     for ($year = $currentYear; $year >= 2000; $year--) {
@@ -688,7 +672,7 @@ mysqli_close($conn);
                     }
                     ?>
                 </select>
-                <select name="month" id="monthSelect">
+                <select name="month" id="monthSelect" class="filter-select">
                     <option value="01">January</option>
                     <option value="02">February</option>
                     <option value="03">March</option>
@@ -702,22 +686,20 @@ mysqli_close($conn);
                     <option value="11">November</option>
                     <option value="12">December</option>
                 </select>
-                <select name="type" id="typeSelect">
-                <option value="semua" <?php echo ($selectedType == 'semua') ? 'selected' : ''; ?>>Semua</option>
+                <select name="type" id="typeSelect" class="filter-select">
+                    <option value="semua" <?php echo ($selectedType == 'semua') ? 'selected' : ''; ?>>Semua</option>
                 </select>
-                <button type="submit">Cari</button>
+                <button type="submit" class="filter-btn">Cari</button>
             </form>
             <!-- Tombol Download PDF -->
-            <form method="GET" action="download_laporan_pdf.php" target="_blank" style="margin: 0;">
+            <form method="GET" action="download_laporan_pdf.php" target="_blank" class="download-form">
                 <input type="hidden" name="year" value="<?php echo $selectedYear; ?>">
                 <input type="hidden" name="month" value="<?php echo $selectedMonth; ?>">
                 <input type="hidden" name="type" value="<?php echo $selectedType; ?>">
-                <button type="submit" style="padding: 10px 20px; background-color: #000; color: #fff; border-radius: 5px; border: none; cursor: pointer;">
-                    Download PDF
-                </button>
+                <button type="submit" class="download-btn">Download PDF</button>
             </form>
         </div>
-   
+
         <div class="tab-container">
             <div class="tab">
                 <button class="tablinks" onclick="openTab(event, 'Pemasukan')">Pemasukan</button>
